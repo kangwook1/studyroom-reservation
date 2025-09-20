@@ -1,6 +1,8 @@
 package com.kangwook.studyroom.global.annotation;
 
 
+import com.kangwook.studyroom.global.common.Role;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -9,6 +11,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AuthRequired {
-    boolean adminOnly() default false;
-    boolean userOnly() default false;
+    Role[] value();
 }
