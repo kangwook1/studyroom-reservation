@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoomReq {
 
-    @NotBlank(message = "이름은 필수입력값입니다.")
+    @NotBlank(message = "이름은 필수 입력값입니다.")
     private String name;
 
-    @NotBlank(message = "위치는 필수입력값입니다.")
+    @NotBlank(message = "위치는 필수 입력값입니다.")
     private String location;
 
-    @NotNull
+    @NotNull(message = "수용 인원은 필수 입력값입니다.")
     private Integer capacity;
 
     // 테스트 용
