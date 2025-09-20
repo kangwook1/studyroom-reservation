@@ -1,6 +1,7 @@
 package com.kangwook.studyroom.room;
 
 
+import com.kangwook.studyroom.global.annotation.AuthRequired;
 import com.kangwook.studyroom.global.common.CommonResponse;
 import com.kangwook.studyroom.room.dto.req.RoomReq;
 import com.kangwook.studyroom.room.dto.res.RoomRes;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.kangwook.studyroom.global.common.StatusCode.*;
+import static com.kangwook.studyroom.global.common.StatusCode.ROOM_CREATED;
 
 @RestController
 @RequestMapping("/rooms")
@@ -21,6 +22,7 @@ public class RoomController {
     private final RoomService roomService;
 
     @PostMapping
+    @AuthRequired(adminOnly = true)
     public ResponseEntity<CommonResponse<RoomRes>> createRoom(@RequestBody @Valid RoomReq roomReq) {
 
         return ResponseEntity.status(ROOM_CREATED.getStatus())

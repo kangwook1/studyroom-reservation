@@ -19,11 +19,10 @@ public enum StatusCode {
 
 
     /* 401 UNAUTHORIZED : 비인증 사용자 */
-    UNAUTHORIZED_LOGIN_ERROR(UNAUTHORIZED, "학번 또는 비밀번호가 올바르지 않습니다."),
-    INVALID_ACCESS_TOKEN(UNAUTHORIZED, "유효하지 않은 토큰입니다."),
+    INVALID_TOKEN(UNAUTHORIZED, "유효하지 않은 토큰입니다."),
 
     /* 403 FORBIDDEN : 권한 없음 */
-    FORBIDDEN(HttpStatus.FORBIDDEN, "권한이 없습니다."),
+    FORBIDDEN_USER(HttpStatus.FORBIDDEN, "권한이 없는 사용자입니다."),
 
     /* 404 NOT_FOUND : 존재하지 않는 리소스 */
     MEMBER_NOT_EXIST(NOT_FOUND, "존재하지 않는 회원입니다."),

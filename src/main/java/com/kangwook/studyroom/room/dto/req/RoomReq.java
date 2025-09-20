@@ -19,6 +19,14 @@ public class RoomReq {
     @NotNull
     private Integer capacity;
 
+    // 테스트 용
+    public RoomReq(String name, String location, Integer capacity) {
+        this.name = name;
+        this.location = location;
+        this.capacity = capacity;
+    }
+
+
     public Room toEntity(){
         return Room.builder()
                 .name(name)
