@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AuthRequired {
-    boolean adminOnly() default false;  // true면 admin-token만 허용
+    boolean adminOnly() default false;
+    boolean userOnly() default false;
 }
