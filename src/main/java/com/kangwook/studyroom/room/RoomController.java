@@ -21,7 +21,7 @@ public class RoomController {
     private final RoomService roomService;
 
     @PostMapping
-    public ResponseEntity<CommonResponse<RoomRes>> createCoupon(@RequestBody @Valid RoomReq roomReq) {
+    public ResponseEntity<CommonResponse<RoomRes>> createRoom(@RequestBody @Valid RoomReq roomReq) {
 
         return ResponseEntity.status(ROOM_CREATED.getStatus())
                 .body(CommonResponse.from(ROOM_CREATED.getMessage(),roomService.createRoom(roomReq)));
