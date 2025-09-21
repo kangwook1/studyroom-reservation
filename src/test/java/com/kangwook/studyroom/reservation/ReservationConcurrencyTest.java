@@ -39,8 +39,8 @@ public class ReservationConcurrencyTest {
 
     @BeforeEach
     void setUp() {
-        Room room=roomRepository.save(new RoomReq("회의실1", "A-7", 6).toEntity());
-        roomId=room.getId();
+        Room room = roomRepository.save(new RoomReq("회의실1", "A-7", 6).toEntity());
+        roomId = room.getId();
     }
 
     @AfterEach

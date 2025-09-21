@@ -22,9 +22,7 @@ public class CommonResponse<T> {
     }
 
     // response 없이 메시지만 보낼 때
-    public static CommonResponse<Object> from(String message){
-        return CommonResponse.builder()
-                .message(message)
-                .build();
+    public static CommonResponse<Object> from(String message) {
+        return CommonResponse.builder().message(message).build();
     }
 }

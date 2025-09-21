@@ -23,12 +23,12 @@ public class RoomService {
 
 
     @Transactional
-    public RoomRes createRoom(RoomReq roomReq){
-        Room room= roomRepository.save(roomReq.toEntity());
+    public RoomRes createRoom(RoomReq roomReq) {
+        Room room = roomRepository.save(roomReq.toEntity());
         return RoomRes.from(room);
     }
 
-    public List<RoomAvailabilityRes> getRoomAvailability(LocalDate date){
+    public List<RoomAvailabilityRes> getRoomAvailability(LocalDate date) {
         // UTC 기준 시간 계산
         Instant dayStart = date.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Instant dayEnd = date.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant();

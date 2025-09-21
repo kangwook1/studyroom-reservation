@@ -18,8 +18,8 @@ public class ExceptionControllerAdvice {
 
     // 유효성 검사 실패로 인한 예외로 메시지와 오류 객체도 담는다.
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException e){
-        ErrorResponse errorResponse= ErrorResponse.builder()
+    public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException e) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
                 .message(INPUT_VALUE_INVALID.getMessage())
                 .validationErrors(ErrorResponse.ValidationError.from(e.getBindingResult()))
                 .build();
@@ -30,8 +30,8 @@ public class ExceptionControllerAdvice {
 
     // DB 무결성 제약에 위반할 경우 발생하는 예외
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ErrorResponse> handleDataIntegrityViolationException(DataIntegrityViolationException e){
-        ErrorResponse errorResponse= ErrorResponse.builder()
+    public ResponseEntity<ErrorResponse> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
                 .message(DATA_INTEGRITY_VIOLATION.getMessage())
                 .build();
 
@@ -54,8 +54,8 @@ public class ExceptionControllerAdvice {
 
     // 무슨 예외가 터졌는지 메시지만 담는다.
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<ErrorResponse> handleCustomException(CustomException e){
-        ErrorResponse errorResponse=ErrorResponse.builder()
+    public ResponseEntity<ErrorResponse> handleCustomException(CustomException e) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
                 .message(e.getStatusCode().getMessage())
                 .build();
 

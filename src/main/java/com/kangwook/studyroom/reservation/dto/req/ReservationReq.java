@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 @Getter
 @NoArgsConstructor
@@ -23,11 +24,27 @@ public class ReservationReq {
     @NotNull(message = "종료 시간은 필수 입력값입니다.")
     private Instant endAt;
 
+    @AssertTrue(message = "시작 시간은 현재 시각 이후여야 합니다.")
+    @JsonIgnore
+    public boolean isStartAtAfterOrEqualsNow() {
+        if (startAt == null) return true;
+        return !startAt.isBefore(Instant.now()); 
+    }
+
     @AssertTrue(message = "시작 시간은 종료 시간보다 빨라야 합니다.")
     @JsonIgnore
     public boolean isValidTimeRange() {
         if (startAt == null || endAt == null) return true;
         return startAt.isBefore(endAt);
+    }
+
+    @AssertTrue(message = "종료 시간은 당일까지만 가능합니다.")
+    @JsonIgnore
+    public boolean isEndAtBeforeToday() {
+        if (endAt == null) return true;
+
+        Instant tomorrowUtc = Instant.now().truncatedTo(ChronoUnit.DAYS).plus(1, ChronoUnit.DAYS);
+        return endAt.isBefore(tomorrowUtc);
     }
 
     // 테스트용

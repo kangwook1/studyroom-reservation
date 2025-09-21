@@ -19,8 +19,8 @@ public enum StatusCode {
     RESERVATION_DELETED(OK, "예약이 취소되었습니다."),
 
     /* 400 BAD_REQUEST : 잘못된 요청 */
-    INPUT_VALUE_INVALID(BAD_REQUEST,"유효하지 않은 입력입니다."),
-    DATA_INTEGRITY_VIOLATION(BAD_REQUEST,"데이터 무결성 제약조건을 위반했습니다."),
+    INPUT_VALUE_INVALID(BAD_REQUEST, "유효하지 않은 입력입니다."),
+    DATA_INTEGRITY_VIOLATION(BAD_REQUEST, "데이터 무결성 제약조건을 위반했습니다."),
 
     /* 401 UNAUTHORIZED : 비인증 사용자 */
     INVALID_TOKEN(UNAUTHORIZED, "인증되지 않은 사용자입니다."),
@@ -29,8 +29,8 @@ public enum StatusCode {
     FORBIDDEN_USER(FORBIDDEN, "권한이 없는 사용자입니다."),
 
     /* 404 NOT_FOUND : 존재하지 않는 리소스 */
-    ROOM_NOT_FOUND(NOT_FOUND,"존재하지 않는 회의실입니다."),
-    RESERVATION_NOT_FOUND(NOT_FOUND,"존재하지 않는 예약입니다."),
+    ROOM_NOT_FOUND(NOT_FOUND, "존재하지 않는 회의실입니다."),
+    RESERVATION_NOT_FOUND(NOT_FOUND, "존재하지 않는 예약입니다."),
 
 
     /* 409 CONFLICT : 리소스 충돌 */
