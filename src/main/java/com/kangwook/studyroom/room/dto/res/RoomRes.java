@@ -20,6 +20,11 @@ public class RoomRes {
     }
 
     public static RoomRes from(Room room) {
-        return new RoomRes(room.getId(), room.getName(), room.getLocation(), room.getCapacity());
+        return RoomRes.builder()
+                .id(room.getId())
+                .name(room.getName())
+                .location(room.getLocation())
+                .capacity(room.getCapacity())
+                .build();
     }
 }

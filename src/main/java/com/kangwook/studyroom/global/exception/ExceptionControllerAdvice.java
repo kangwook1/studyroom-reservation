@@ -2,14 +2,14 @@ package com.kangwook.studyroom.global.exception;
 
 
 import com.kangwook.studyroom.global.common.ErrorResponse;
+import org.springframework.dao.CannotAcquireLockException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static com.kangwook.studyroom.global.common.StatusCode.DATA_INTEGRITY_VIOLATION;
-import static com.kangwook.studyroom.global.common.StatusCode.INPUT_VALUE_INVALID;
+import static com.kangwook.studyroom.global.common.StatusCode.*;
 
 
 @RestControllerAdvice
@@ -37,6 +37,17 @@ public class ExceptionControllerAdvice {
 
 
         return ResponseEntity.status(DATA_INTEGRITY_VIOLATION.getStatus())
+                .body(errorResponse);
+    }
+
+    // 예약 시 락 획득 실패 처리
+    @ExceptionHandler({CannotAcquireLockException.class})
+    public ResponseEntity<ErrorResponse> handleCannotAcquireLockException(CannotAcquireLockException e) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .message(CONCURRENT_RESERVATION.getMessage())
+                .build();
+
+        return ResponseEntity.status(CONCURRENT_RESERVATION.getStatus())
                 .body(errorResponse);
     }
 
