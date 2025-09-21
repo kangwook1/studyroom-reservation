@@ -51,7 +51,10 @@
 - @AuthRequired 사용 시 request 속성에서 role,userId 가져오기 / ADMIN이랑 USER 둘 다 허용하고 싶어
 
 
-**Title:**  중복 예약 방지 전략(PostgreSQL EXCLUDE 제약)
+## ADR
+
+<br>
+중복 예약 방지 전략(PostgreSQL EXCLUDE 제약)
 
 **Status:** 적용
 
@@ -73,7 +76,7 @@
 
 ---
 
-**Title:** RBAC 간소화 방식(커스텀 어노테이션을 사용한 간단한 인증/인가)
+RBAC 간소화 방식(커스텀 어노테이션을 사용한 간단한 인증/인가)
 
 **Status:** 적용
 
