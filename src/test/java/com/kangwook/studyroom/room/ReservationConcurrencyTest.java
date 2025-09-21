@@ -67,12 +67,12 @@ public class ReservationConcurrencyTest {
         long testStartTime = System.nanoTime();
 
         for (int i = 0; i < numberOfThreads; i++) {
-            final long memberId = i + 1;
+            final long userId = i + 1;
             executorService.submit(() -> {
                 long startTime = System.nanoTime();
                 try {
                     ReservationReq req = new ReservationReq(roomId, startAt, endAt);
-                    ReservationRes res = reservationService.createReservation(memberId, req);
+                    ReservationRes res = reservationService.createReservation(userId, req);
                     successCount.incrementAndGet();
                 } catch (DataIntegrityViolationException e) {
                     synchronized (exceptions) {
