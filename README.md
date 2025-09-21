@@ -49,6 +49,7 @@
 - ReservationReq DTO 유효성 검사 / 필드 간 비교도 유효성 검사 가능해?
 - @ResController에 속하는 메서드만 @AuthAquired 적용 / 컨트롤러에 속하는 메서드만 어노테이션 적용하고 싶어
 - @AuthRequired 사용 시 request 속성에서 role,userId 가져오기 / ADMIN이랑 USER 둘 다 허용하고 싶어
+- 가용성 조회 쿼리, 서비스 코드 / 회의실,예약 내역, 빈 시간대를 조회하는 코드를 짜줘
 
 
 ## ADR
