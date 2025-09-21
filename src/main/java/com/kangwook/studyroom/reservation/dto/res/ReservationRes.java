@@ -12,15 +12,12 @@ public class ReservationRes {
     private final Long id;
     private final Instant startAt;
     private final Instant endAt;
-    private final Long roomId;
 
     @Builder
-    public ReservationRes(Long id, Instant startAt, Instant endAt, Long roomId) {
+    public ReservationRes(Long id, Instant startAt, Instant endAt) {
         this.id = id;
         this.startAt = startAt;
         this.endAt = endAt;
-        this.roomId = roomId;
-
     }
 
     public static ReservationRes from(Reservation reservation) {
@@ -28,7 +25,6 @@ public class ReservationRes {
                 .id(reservation.getId())
                 .startAt(reservation.getStartAt())
                 .endAt(reservation.getEndAt())
-                .roomId(reservation.getRoomId())
                 .build();
     }
 }
