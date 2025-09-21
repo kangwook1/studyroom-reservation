@@ -27,7 +27,7 @@ public class RoomReq {
     }
 
 
-    public Room toEntity(){
+    public Room toEntity() {
         return Room.builder()
                 .name(name)
                 .location(location)

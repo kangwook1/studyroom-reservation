@@ -22,13 +22,13 @@ public class ReservationService {
     private final EntityManager em;
 
     @Transactional
-    public ReservationRes createReservation(Long userId,ReservationReq reservationReq) {
+    public ReservationRes createReservation(Long userId, ReservationReq reservationReq) {
 
         Room room = roomRepository.findById(reservationReq.getRoomId())
                 .orElseThrow(() -> new CustomException(StatusCode.ROOM_NOT_FOUND));
 
         setLockTimeout(3000);
-        Reservation reservation= reservationRepository.save(reservationReq.toEntity(userId));
+        Reservation reservation = reservationRepository.save(reservationReq.toEntity(userId));
 
         return ReservationRes.from(reservation);
 
@@ -36,17 +36,15 @@ public class ReservationService {
 
     @Transactional
     public void deleteReservation(Role role, Long userId, Long reservationId) {
-        Reservation reservation=reservationRepository.findById(reservationId)
+        Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new CustomException(StatusCode.RESERVATION_NOT_FOUND));
 
-        if(role==Role.ADMIN){
+        if (role == Role.ADMIN) {
             reservationRepository.delete(reservation);
-        }
-        else{
-            if(reservation.getUserId().equals(userId)){
+        } else {
+            if (reservation.getUserId().equals(userId)) {
                 reservationRepository.delete(reservation);
-            }
-            else throw new CustomException(StatusCode.FORBIDDEN_USER);
+            } else throw new CustomException(StatusCode.FORBIDDEN_USER);
         }
     }
 

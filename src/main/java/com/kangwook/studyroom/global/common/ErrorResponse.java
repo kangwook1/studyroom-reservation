@@ -22,11 +22,11 @@ public class ErrorResponse {
     }
 
     @Getter
-    public static class ValidationError{
+    public static class ValidationError {
 
-        private String field;
-        private String value;
-        private String reason;
+        private final String field;
+        private final String value;
+        private final String reason;
 
         private ValidationError(String field, String value, String reason) {
             this.field = field;
@@ -34,12 +34,12 @@ public class ErrorResponse {
             this.reason = reason;
         }
 
-        public static List<ValidationError> from(BindingResult bindingResult){
-            List<FieldError> fieldErrors= bindingResult.getFieldErrors();
+        public static List<ValidationError> from(BindingResult bindingResult) {
+            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
             return fieldErrors.stream()
                     .map(error -> new ValidationError(
                             error.getField(),
-                            (error.getRejectedValue()==null) ? null : error.getRejectedValue().toString(),
+                            (error.getRejectedValue() == null) ? null : error.getRejectedValue().toString(),
                             error.getDefaultMessage()))
                     .collect(Collectors.toList());
         }
