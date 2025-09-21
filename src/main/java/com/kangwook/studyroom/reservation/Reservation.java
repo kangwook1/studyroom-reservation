@@ -26,15 +26,15 @@ public class Reservation {
     @Column(name = "room_id", nullable = false)
     private Long roomId;
 
-    @Column(name = "member_id", nullable = false)
-    private Long memberId;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     @Builder
-    public Reservation(Instant startAt, Instant endAt, Long roomId, Long memberId) {
+    public Reservation(Instant startAt, Instant endAt, Long roomId, Long userId) {
         this.startAt = startAt;
         this.endAt = endAt;
         this.roomId = roomId;
-        this.memberId = memberId;
+        this.userId = userId;
     }
 
 }

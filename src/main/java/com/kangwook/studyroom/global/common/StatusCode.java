@@ -14,6 +14,8 @@ public enum StatusCode {
     ROOM_CREATED(CREATED, "회의실이 생성되었습니다."),
 
     // Reservation
+    RESERVATION_CREATED(CREATED, "예약이 완료되었습니다."),
+    RESERVATION_DELETED(OK, "예약이 취소되었습니다."),
 
     /* 400 BAD_REQUEST : 잘못된 요청 */
     INPUT_VALUE_INVALID(BAD_REQUEST,"유효하지 않은 입력입니다."),

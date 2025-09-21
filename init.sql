@@ -10,7 +10,7 @@ CREATE TABLE room (
 CREATE TABLE reservation (
                               id BIGSERIAL PRIMARY KEY,
                               room_id BIGINT NOT NULL,
-                              member_id BIGINT NOT NULL,
+                              user_id BIGINT NOT NULL,
                               start_at TIMESTAMPTZ NOT NULL,
                               end_at TIMESTAMPTZ NOT NULL
 );

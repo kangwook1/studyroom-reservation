@@ -10,12 +10,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import static com.kangwook.studyroom.global.common.StatusCode.ROOM_CREATED;
+import static com.kangwook.studyroom.global.common.StatusCode.*;
 
 @RestController
 @RequestMapping("/reservations")
@@ -26,9 +23,21 @@ public class ReservationController {
     @PostMapping
     @AuthRequired(value = Role.USER)
     public ResponseEntity<CommonResponse<ReservationRes>> createReservation(HttpServletRequest request, @RequestBody @Valid ReservationReq reservationReq) {
-        Long userId=Long.parseLong((String)request.getAttribute("userId"));
+        Long userId=(Long)request.getAttribute("userId");
 
-        return ResponseEntity.status(ROOM_CREATED.getStatus())
-                .body(CommonResponse.from(ROOM_CREATED.getMessage(),reservationService.createReservation(userId, reservationReq)));
+        return ResponseEntity.status(RESERVATION_CREATED.getStatus())
+                .body(CommonResponse.from(RESERVATION_CREATED.getMessage(),reservationService.createReservation(userId, reservationReq)));
+    }
+
+    @DeleteMapping("/{id}")
+    @AuthRequired(value = {Role.ADMIN, Role.USER} )
+    public ResponseEntity<CommonResponse<Object>> deleteReservation(HttpServletRequest request, @PathVariable("id") Long reservationId) {
+        Role role=(Role)request.getAttribute("role");
+        Long userId=(Long)request.getAttribute("userId");
+
+        reservationService.deleteReservation(role, userId, reservationId);
+
+        return ResponseEntity.status(RESERVATION_DELETED.getStatus())
+                .body(CommonResponse.from(RESERVATION_DELETED.getMessage()));
     }
 }

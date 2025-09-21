@@ -1,9 +1,9 @@
-package com.kangwook.studyroom.room;
+package com.kangwook.studyroom.reservation;
 
-import com.kangwook.studyroom.reservation.ReservationRepository;
-import com.kangwook.studyroom.reservation.ReservationService;
 import com.kangwook.studyroom.reservation.dto.req.ReservationReq;
 import com.kangwook.studyroom.reservation.dto.res.ReservationRes;
+import com.kangwook.studyroom.room.Room;
+import com.kangwook.studyroom.room.RoomRepository;
 import com.kangwook.studyroom.room.dto.req.RoomReq;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -67,12 +67,12 @@ public class ReservationConcurrencyTest {
         long testStartTime = System.nanoTime();
 
         for (int i = 0; i < numberOfThreads; i++) {
-            final long memberId = i + 1;
+            final long userId = i + 1;
             executorService.submit(() -> {
                 long startTime = System.nanoTime();
                 try {
                     ReservationReq req = new ReservationReq(roomId, startAt, endAt);
-                    ReservationRes res = reservationService.createReservation(memberId, req);
+                    ReservationRes res = reservationService.createReservation(userId, req);
                     successCount.incrementAndGet();
                 } catch (DataIntegrityViolationException e) {
                     synchronized (exceptions) {

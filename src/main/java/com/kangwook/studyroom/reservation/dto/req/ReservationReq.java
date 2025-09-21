@@ -37,12 +37,12 @@ public class ReservationReq {
         this.endAt = endAt;
     }
 
-    public Reservation toEntity(Long memberId) {
+    public Reservation toEntity(Long userId) {
         return Reservation.builder()
                 .startAt(startAt)
                 .endAt(endAt)
                 .roomId(roomId)
-                .memberId(memberId)
+                .userId(userId)
                 .build();
     }
 }
