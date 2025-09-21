@@ -1,9 +1,9 @@
-package com.kangwook.studyroom.room;
+package com.kangwook.studyroom.reservation;
 
-import com.kangwook.studyroom.reservation.ReservationRepository;
-import com.kangwook.studyroom.reservation.ReservationService;
 import com.kangwook.studyroom.reservation.dto.req.ReservationReq;
 import com.kangwook.studyroom.reservation.dto.res.ReservationRes;
+import com.kangwook.studyroom.room.Room;
+import com.kangwook.studyroom.room.RoomRepository;
 import com.kangwook.studyroom.room.dto.req.RoomReq;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
