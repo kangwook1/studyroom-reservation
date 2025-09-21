@@ -12,6 +12,7 @@ public enum StatusCode {
 
     // Room
     ROOM_CREATED(CREATED, "회의실이 생성되었습니다."),
+    ROOM_FOUND(OK, "해당 날짜에 맞는 예약 현황을 조회했습니다."),
 
     // Reservation
     RESERVATION_CREATED(CREATED, "예약이 완료되었습니다."),

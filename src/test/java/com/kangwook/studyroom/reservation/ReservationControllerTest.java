@@ -43,7 +43,6 @@ public class ReservationControllerTest {
 
         ReservationRes response = ReservationRes.builder()
                 .id(1L)
-                .roomId(1L)
                 .startAt(request.getStartAt())
                 .endAt(request.getEndAt())
                 .build();
