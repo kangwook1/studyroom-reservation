@@ -1,19 +1,13 @@
 CREATE EXTENSION IF NOT EXISTS btree_gist;
 
-CREATE TABLE rooms (
+CREATE TABLE room (
                        id BIGSERIAL PRIMARY KEY,
                        name VARCHAR(20) NOT NULL UNIQUE,
                        location VARCHAR(20) NOT NULL,
                        capacity INT NOT NULL
 );
 
-CREATE TABLE members (
-                         id BIGSERIAL PRIMARY KEY,
-                         name VARCHAR(20) NOT NULL,
-                         role VARCHAR(20) NOT NULL
-);
-
-CREATE TABLE reservations (
+CREATE TABLE reservation (
                               id BIGSERIAL PRIMARY KEY,
                               room_id BIGINT NOT NULL,
                               member_id BIGINT NOT NULL,
@@ -21,7 +15,7 @@ CREATE TABLE reservations (
                               end_at TIMESTAMPTZ NOT NULL
 );
 
-ALTER TABLE reservations
+ALTER TABLE reservation
     ADD CONSTRAINT reservation_no_overlap
     EXCLUDE USING gist (
     room_id WITH =,
