@@ -29,13 +29,13 @@ public class AuthAspect {
         }
 
         Role role;
-        String userId = null;
+        Long userId = null;
 
         if (token.equals("admin-token")) {
             role = Role.ADMIN;
         } else if (token.matches("user-token-\\d+")) {
             role = Role.USER;
-            userId = token.split("-")[2];
+            userId = Long.parseLong(token.split("-")[2]);
         } else {
             throw new CustomException(INVALID_TOKEN);
         }
